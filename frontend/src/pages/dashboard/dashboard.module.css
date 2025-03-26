@@ -1,0 +1,356 @@
+.dashboardWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.createPostContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #dedede;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    padding: 1rem;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.createPostContainer:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.createPostTop {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.userProfile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.textareaOfContent {
+    flex: 1;
+    min-height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0.8rem;
+    outline: none;
+    font-size: 1rem;
+    resize: none;
+}
+
+.createPostBottom {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.addMediaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #007bff;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.addMediaButton:hover {
+    background: #0056b3;
+    transform: scale(1.03);
+}
+
+.addMediaButton svg {
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.postButton {
+    background: #007bff;
+    color: #fff;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.postButton:hover {
+    background: #0056b3;
+    transform: scale(1.03);
+    opacity: 0.95;
+}
+
+.postButton:active {
+    background: #004a9d;
+    transform: scale(0.98);
+}
+
+.postButtonIcon {
+    width: 1.1em;
+    height: 1.1em;
+    margin-left: 0.4rem;
+}
+
+.postContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.singleCard {
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #dedede;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.singleCard:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.singleCard_profileContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.postUserInfo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.postUserTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.postUserName {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333;
+}
+
+.postUserHandle {
+    margin: 0;
+    color: #777;
+    font-size: 0.9rem;
+    padding-top: 0.2rem;
+}
+
+.delButtonContainer {
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.delButton {
+    height: 1.2em;
+    color: #e74c3c;
+}
+
+.delButtonContainer:hover .delButton {
+    color: #c0392b;
+}
+
+.postBody {
+    padding: 0.5rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.singleCard_image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.singleCard_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.optionsContainer {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 0 1rem 0;
+    border-top: 1px solid #eee;
+}
+
+.singleOption_optionsContainer {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.singleOption_optionsContainer:hover {
+    transform: scale(1.05);
+}
+
+.singleOption_optionsContainer svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.commentsContainer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allCommentsContainer {
+    background: #fff;
+    border-radius: 12px;
+    position: relative;
+    padding: 1.4rem;
+    width: 90%;
+    max-width: 450px;
+    max-height: 80vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.singleComment {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.singleComment_profileContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.singleComment_profileContainer img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.commentUserName {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+    color: #333;
+}
+
+.commentUserHandle {
+    font-size: 0.9rem;
+    color: gray;
+    margin: 0;
+}
+
+.commentBody {
+    font-size: 0.95rem;
+    color: #333;
+    margin-left: 2.8rem;
+}
+
+.postCommentContainer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    gap: 0.8rem;
+    background: #fff;
+    padding-top: 1rem;
+}
+
+.postCommentContainer input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.commentBtn {
+    background: #007bff;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.commentBtn:hover {
+    background: #0056b3;
+    transform: scale(1.03);
+}
+
+@media screen and (max-width: 496px) {
+    .userProfile {
+        width: 45px;
+        height: 45px;
+    }
+
+    .textareaOfContent {
+        font-size: 0.9rem;
+        min-height: 50px;
+    }
+
+    .allCommentsContainer {
+        max-width: 85%;
+        padding: 1rem;
+        margin-right: 1rem;
+    }
+
+   
+    .postCommentContainer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .commentBtn {
+        width: 100%;
+    }
+}

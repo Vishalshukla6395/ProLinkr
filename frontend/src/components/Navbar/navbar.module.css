@@ -1,0 +1,80 @@
+.navbarContainer {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.brand:hover {
+    color: #0056b3;
+}
+
+.navItems {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.navItem {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.navItem:hover {
+    color: #007bff;
+}
+
+.signUpButton {
+    background: linear-gradient(180deg, #007bff, #006ee6);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+.signUpButton:hover {
+    background: linear-gradient(180deg, #006ee6, #0056b3);
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+}
+
+.signUpButton:active {
+    background: linear-gradient(180deg, #0056b3, #004494);
+    box-shadow: 0 4px 8px rgba(0, 86, 179, 0.4);
+}
+
+@media (max-width: 768px) {
+    .brand {
+        font-size: 1.6rem;
+    }
+
+    .navItems {
+        gap: 1rem;
+    }
+}

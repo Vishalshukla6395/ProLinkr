@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+.heroSection {
+    
+    background: url("/images/wave-bg.svg") no-repeat bottom center,
+        linear-gradient(135deg, #f3f9ff 0%, #ffffff 100%);
+    background-size: cover;
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.mainContainer {
+    font-family: 'Poppins', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    
+}
+
+
+.mainContainer_left {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+
+.mainContainer_right {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    animation-delay: 0.3s;
+}
+
+
+.headline {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: #0b0b0b;
+}
+
+
+.headline span {
+    color: #007bff;
+}
+
+
+.subHeadline {
+    font-size: 1.2rem;
+    color: #606060;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 550px;
+}
+
+
+.exploreButton {
+    background: linear-gradient(180deg, #007bff, #006ee6);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 1.7rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+    outline: none;
+    width: fit-content;
+}
+
+.exploreButton:hover {
+    background: linear-gradient(180deg, #006ee6, #0056b3);
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+}
+
+.exploreButton:active {
+    background: linear-gradient(180deg, #0056b3, #004494);
+    box-shadow: 0 4px 8px rgba(0, 86, 179, 0.4);
+}
+
+
+.mainContainer_right img {
+    max-width: 80%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .mainContainer {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .headline {
+        font-size: 2.2rem;
+    }
+
+    .subHeadline {
+        font-size: 1rem;
+    }
+
+    .mainContainer_right img {
+        max-width: 90%;
+    }
+}

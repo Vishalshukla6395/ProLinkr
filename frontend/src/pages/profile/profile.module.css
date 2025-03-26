@@ -1,0 +1,333 @@
+.container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.banner {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    background: url("https://images.pexels.com/photos/545521/pexels-photo-545521.jpeg?auto=compress&cs=tinysrgb&w=1250&h=450&dpr=1") no-repeat center/cover;    position: relative;
+}
+
+.profilePicContainer {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    margin-top: -3rem;
+    margin-left: 2rem;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    overflow: hidden;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+.profilePic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.plusIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.plusIconSvg {
+    width: 1.1rem;
+    height: 1.1rem;
+    stroke: #fff;
+    fill: #fff;
+}
+
+.profilePicContainer:hover .plusIcon {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.profilePicContainer:hover .profilePic {
+    filter: brightness(0.9);
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.profileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileName {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.username {
+    color: #777;
+    font-size: 0.95rem;
+}
+
+.viewField h2,
+.viewField p {
+    margin: 0;
+    padding-left: 0;
+    background-color: white;
+    margin-top: 1rem;
+}
+
+.editableField {
+    background: #fafafa;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+.nameInput {
+    font-size: 1.25rem;
+    font-weight: 500;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    outline: none;
+    width: 100%;
+}
+
+.bioEdit {
+    width: 100%;
+    min-height: 4rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.6rem;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bioText {
+    background: #f9f9f9;
+    border-radius: 6px;
+    padding: 0.6rem;
+    min-height: 4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 0;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.editBtn,
+.submitBtn {
+    background: #035db7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+.editBtn:hover,
+.submitBtn:hover {
+    background: #024a91;
+}
+
+
+.recentActivity {
+    margin-top: 1rem;
+}
+
+.sectionTitle {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.postCard {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.postFlex {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.postImg {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.emptyMedia {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 6px;
+    background: #f0f0f0;
+}
+
+.sectionBlock {
+    margin-top: 1rem;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cardsContainer {
+    display: flex;
+    gap: 1.4rem;
+    padding-top: 1.4rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.infoCard {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem 2.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.cardTitle {
+    font-weight: bold;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.4rem;
+}
+
+.placeholderText {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.addBtn {
+    background: #029dff;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+.addBtn:hover {
+    background: #0285d9;
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modalContent {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.2rem;
+    width: 80%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.modalInput {
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.saveBtn {
+    background: #035db7;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: fit-content;
+}
+
+.saveBtn:hover {
+    background: #024a91;
+}
+
+
+@media (max-width: 768px) {
+    .banner {
+        height: 140px;
+    }
+
+    .profilePicContainer {
+        width: 5rem;
+        height: 5rem;
+        margin-top: -2.5rem;
+        margin-left: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .username {
+        display: none;
+    }
+}
