@@ -332,7 +332,7 @@ export const myConnections = async (req, res) => {
     if (!user) return res.status(404).json({ message: "User not found" });
     const connections = await ConnectionRequest.find({
       connectionId: user._id,
-    }).populate("connectionId", "name email username profilePicture");
+    }).populate("userId", "name email username profilePicture");
     return res.json({ connections });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -345,24 +345,37 @@ export const acceptConnectionRequest = async (req, res) => {
     if (!token || !requestId || !action_type)
       return res
         .status(400)
-        .json({ message: "Token, requestId and action_type are required" });
+        .json({ message: "Token, requestId, and action_type are required" });
+
     const user = await User.findOne({ token });
     if (!user) return res.status(404).json({ message: "User not found" });
+
     const connection = await ConnectionRequest.findOne({ _id: requestId });
     if (!connection)
       return res.status(404).json({ message: "Connection not found" });
+
     if (connection.connectionId.toString() !== user._id.toString())
       return res
         .status(403)
         .json({ message: "Not authorized to update this connection request" });
+
     if (action_type === "accept") {
       connection.status_accepted = true;
+      await connection.save();
+
+      await User.findByIdAndUpdate(user._id, {
+        $push: { connections: connection.userId },
+      });
+
+      await User.findByIdAndUpdate(connection.userId, {
+        $push: { connections: connection.connectionId },
+      });
     } else if (action_type === "reject") {
-      connection.status_accepted = false;
+      await ConnectionRequest.findByIdAndDelete(requestId);
     } else {
       return res.status(400).json({ message: "Invalid action_type" });
     }
-    await connection.save();
+
     return res.json({ message: "Request updated" });
   } catch (error) {
     return res.status(500).json({ message: error.message });

@@ -1,15 +1,13 @@
-import {
-  acceptConnection,
-  getMyConnectionRequests,
-} from "@/config/redux/action/authAction";
-import DashboardLayout from "@/layout/dashboardLayout";
-import UserLayout from "@/layout/userLayout";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Styles from "./my_connections.module.css";
+import {
+  getMyConnectionRequests,
+  acceptConnection,
+} from "@/config/redux/action/authAction";
 import { useRouter } from "next/router";
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+import DashboardLayout from "@/layout/dashboardLayout";
+import UserLayout from "@/layout/userLayout";
+import Styles from "./my_connections.module.css";
 
 const getProfileImage = (profilePicture) =>
   profilePicture && profilePicture.url ? profilePicture.url : "";
@@ -19,13 +17,22 @@ function MyConnections() {
   const { connectionRequest } = useSelector((state) => state.auth);
   const router = useRouter();
 
-  useEffect(() => {
+  const fetchRequests = () => {
     dispatch(getMyConnectionRequests({ token: localStorage.getItem("token") }));
+  };
+
+  useEffect(() => {
+    fetchRequests();
+
+    const interval = setInterval(() => {
+      fetchRequests();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, [dispatch]);
 
   const pendingRequests =
     connectionRequest?.filter((item) => item.status_accepted === null) || [];
-
   const acceptedConnections =
     connectionRequest?.filter((item) => item.status_accepted !== null) || [];
 
@@ -44,31 +51,30 @@ function MyConnections() {
                     key={user?._id || index}
                     className={Styles.userCard}
                     onClick={() =>
-                      router.push(`/view_profile/${user.connectionId.username}`)
+                      router.push(`/view_profile/${user?.userId?.username}`)
                     }
                   >
                     <div className={Styles.profilePicture}>
                       <img
-                        src={getProfileImage(
-                          user?.connectionId?.profilePicture
-                        )}
-                        alt={user?.connectionId?.name || "User"}
+                        src={getProfileImage(user?.userId?.profilePicture)}
+                        alt={user?.userId?.name || "User"}
                       />
                     </div>
                     <div className={Styles.userInfo}>
-                      <h3>{user?.connectionId?.name || "Unknown User"}</h3>
-                      <p>{user?.connectionId?.username || "No username"}</p>
+                      <h3>{user?.userId?.name || "Unknown User"}</h3>
+                      <p>{user?.userId?.username || "No username"}</p>
                     </div>
                     <button
-                      onClick={(e) => {
+                      onClick={async (e) => {
                         e.stopPropagation();
-                        dispatch(
+                        await dispatch(
                           acceptConnection({
                             connectionId: user._id,
                             token: localStorage.getItem("token"),
                             action: "accept",
                           })
                         );
+                        fetchRequests(); // Refresh list after accepting
                       }}
                       className={Styles.acceptBtn}
                     >
@@ -89,20 +95,18 @@ function MyConnections() {
                     key={user?._id || index}
                     className={Styles.userCard}
                     onClick={() =>
-                      router.push(`/view_profile/${user.connectionId.username}`)
+                      router.push(`/view_profile/${user?.userId?.username}`)
                     }
                   >
                     <div className={Styles.profilePicture}>
                       <img
-                        src={getProfileImage(
-                          user?.connectionId?.profilePicture
-                        )}
-                        alt={user?.connectionId?.name || "User"}
+                        src={getProfileImage(user?.userId?.profilePicture)}
+                        alt={user?.userId?.name || "User"}
                       />
                     </div>
                     <div className={Styles.userInfo}>
-                      <h3>{user?.connectionId?.name || "Unknown User"}</h3>
-                      <p>{user?.connectionId?.username || "No username"}</p>
+                      <h3>{user?.userId?.name || "Unknown User"}</h3>
+                      <p>{user?.userId?.username || "No username"}</p>
                     </div>
                   </div>
                 ))}
