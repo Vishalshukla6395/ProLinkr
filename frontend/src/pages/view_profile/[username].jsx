@@ -129,7 +129,6 @@ function ViewProfile({ initialUserProfile }) {
                           userId: userProfile?.userId?._id,
                         })
                       );
-
                       await fetchProfileData();
                       await fetchPostsAndConnections();
                     }}
@@ -138,6 +137,30 @@ function ViewProfile({ initialUserProfile }) {
                     Connect
                   </button>
                 )}
+                {/* Download Icon */}
+                <div
+                  className={Styles.downloadIcon}
+                  onClick={async () => {
+                    const response = await clientServer.get(
+                      `/user/download_resume?id=${userProfile?.userId?._id}`
+                    );
+                    window.open(`${response.data.message}`, "_blank");
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
 
@@ -159,6 +182,48 @@ function ViewProfile({ initialUserProfile }) {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Professional Experience Section */}
+            <div className={Styles.infoSection}>
+              <h3 className={Styles.sectionTitle}>Professional Experience</h3>
+              <div className={Styles.cardContainer}>
+                {userProfile?.pastWork?.length > 0 ? (
+                  userProfile.pastWork.map((work, index) => (
+                    <div key={index} className={Styles.infoCard}>
+                      <p className={Styles.cardTitle}>
+                        {work.company} - {work.position}
+                      </p>
+                      <p className={Styles.cardSubtitle}>{work.years}</p>
+                    </div>
+                  ))
+                ) : (
+                  <p className={Styles.placeholderText}>
+                    No professional experience available
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Education Section */}
+            <div className={Styles.infoSection}>
+              <h3 className={Styles.sectionTitle}>Education</h3>
+              <div className={Styles.cardContainer}>
+                {userProfile?.education?.length > 0 ? (
+                  userProfile.education.map((edu, index) => (
+                    <div key={index} className={Styles.infoCard}>
+                      <p className={Styles.cardTitle}>
+                        {edu.school} - {edu.degree}
+                      </p>
+                      <p className={Styles.cardSubtitle}>{edu.fieldOfStudy}</p>
+                    </div>
+                  ))
+                ) : (
+                  <p className={Styles.placeholderText}>
+                    No educational background available
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>
